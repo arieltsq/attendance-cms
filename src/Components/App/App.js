@@ -1,18 +1,23 @@
-import React, { Component } from 'react';
-//import logo from './logo.svg';
-import './App.css';
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import * as actionCreators from "../Actions/ActionsCreator";
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          
-          <h1 className="App-title">Welcome to Attendance CMS System</h1>
-        </header>
-      </div>
-    );
-  }
+import Main from "./Main";
+
+// map the initate state to props
+
+function mapStateToProps(state) {
+  return {
+    ginnahs: state.ginnahs
+  };
 }
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(actionCreators, dispatch);
+}
+
+//subscribe to the store
+
+const App = connect(mapStateToProps, mapDispatchToProps)(Main);
 
 export default App;

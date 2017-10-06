@@ -18,6 +18,6 @@ const ginnahs = [
     "ginnah_school": "Yio Chu Kang School", 
     "ginnah_description": "Extremely smart"
 }
-]
+];
 
 export default ginnahs;

@@ -15,4 +15,5 @@ export const kakias = [
         "kakia_name": "Dee Tan", 
         "kakia_school": "Nanyang Polytechnic"
     }
-]
+];
+export default kakias;
