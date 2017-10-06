@@ -12,9 +12,9 @@ import kakiaReducer from "./KakiaReducer";
 
 
  const rootReducer = combineReducers({
-    ginnahReducer,
-    taoReducer,
-    kakiaReducer,
+    ginnahs: ginnahReducer,
+    taos: taoReducer,
+    kakias: kakiaReducer,
     routing: routerReducer 
 })
 
