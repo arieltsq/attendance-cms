@@ -11,11 +11,11 @@ import taoReducer from "./TaoReducer";
 import kakiaReducer from "./KakiaReducer";
 
 
- const rootReducer = combineReducers({
+const rootReducer = combineReducers({
     ginnahs: ginnahReducer,
     taos: taoReducer,
     kakias: kakiaReducer,
-    routing: routerReducer 
-})
+    routing: routerReducer
+});
 
 export default rootReducer;

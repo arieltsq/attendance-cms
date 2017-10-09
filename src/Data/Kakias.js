@@ -17,3 +17,14 @@ export const kakias = [
     }
 ];
 export default kakias;
+
+
+
+// function writeUserData(userId, name, school) {
+//     firebase.database().ref('users/' + userId).set({
+//       username: name,
+//       school: school
+//     });
+//   }
+
+//   writeUserData(1, "Isaac", "Temasek Poly");
