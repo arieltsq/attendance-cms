@@ -3,12 +3,12 @@ import { syncHistoryWithStore } from "react-router-redux";
 // import { browserHistory } from 'react-router'
 //import the root reducer
 import createHistory from 'history/createBrowserHistory'
-import rootReducer from "./Reducers/IndexReducers";
+import rootReducer from "./reducers/index";
 
 //importing seed data
-import kakias from "./Data/kakias";
-import ginnahs from "./Data/ginnahs";
-import taos from "./Data/taos";
+import kakias from "./data/kakias";
+import ginnahs from "./data/ginnahs";
+import taos from "./data/taos";
 
 const defaultState = {
   ginnahs,

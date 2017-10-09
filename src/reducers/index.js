@@ -6,13 +6,13 @@ import { combineReducers } from "redux";
 import { routerReducer } from "react-router-redux";
 
 // All the reducers
-import ginnahReducer from "./GinnahReducer";
-import taoReducer from "./TaoReducer";
-import kakiaReducer from "./KakiaReducer";
+import ginnah from "./ginnah";
+import taoReducer from "./tao";
+import kakiaReducer from "./kakia";
 
 
  const rootReducer = combineReducers({
-    ginnahs: ginnahReducer,
+    ginnahs: ginnah,
     taos: taoReducer,
     kakias: kakiaReducer,
     routing: routerReducer 

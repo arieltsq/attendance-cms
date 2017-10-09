@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./Components/App/App";
 import { Provider } from "react-redux";
 import { Router, Route } from "react-router";
-import {initStore} from "./Store";
+import {initStore} from "./store";
 
 
 // Makes the Redux store available to the connect() calls in the component hierarchy below. Normally, you can’t use connect() without wrapping a parent or ancestor component in <Provider>.
