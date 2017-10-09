@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-<<<<<<< HEAD
 import * as actionCreators from "../../actions/actions";
-
-=======
-import * as actionCreators from "../../Actions/ActionsCreator";
+//import * as actionCreators from "../../Actions/ActionsCreator";
 //import fire from './fire';
->>>>>>> master
 import Main from "./Main";
 
 // map the initate state to props
