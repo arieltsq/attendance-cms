@@ -1,10 +1,18 @@
 import React from "react";
+import ReactDOM from 'react-dom';
 import { render } from "react-dom";
 import "./index.css";
 import App from "./Components/App/App";
 import { Provider } from "react-redux";
+<<<<<<< HEAD
 import { Router, Route } from "react-router";
 import {initStore} from "./store";
+=======
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {initStore} from "./Store";
+import InputData from "./Components/InputData/InputData";
+//import { ConnectedRouter } from 'react-redux-redux';
+>>>>>>> master
 
 
 // Makes the Redux store available to the connect() calls in the component hierarchy below. Normally, you can’t use connect() without wrapping a parent or ancestor component in <Provider>.
@@ -15,12 +23,13 @@ const storeAndHistory = initStore();
  const store = storeAndHistory[0];
  const history = storeAndHistory[1]
 
-const router = (
+ReactDOM.render(
   <Provider store={store}>
-    <Router history={history}>
-      <Route path="/" component={App} />
-    </Router>
-  </Provider>
-);
-
-render(router, document.getElementById("root"));
+  <Router history={history}>
+    <Switch>
+     <Route exact path="/" component={App} />
+     <Route path="/Add" component={InputData} />
+    </Switch>
+  </Router>
+</Provider>, 
+document.getElementById("root"));
