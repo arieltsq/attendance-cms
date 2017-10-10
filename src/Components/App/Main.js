@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
-
+import AllKakia from "../Kakia/AllKakia";
 import "./App.css";
 
 class Main extends Component {
@@ -10,7 +10,8 @@ class Main extends Component {
     return (
       <div className="Main">
         <h1 className="Main-title"> Welcome to Attendance CMS System</h1>
-        <Link to='/Add'><button>Add</button></Link>
+        <Link to='/Add'><button>Ginnah</button></Link>
+        <AllKakia {...this.props}/>
       </div>
     );
   }

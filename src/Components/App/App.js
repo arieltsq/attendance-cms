@@ -10,8 +10,8 @@ import Main from "./Main";
 
 function mapStateToProps(state) {
   return {
-    // ginnahsXXX: state.ginnahs,
-    // kakias: state.kakias,
+    // ginnahs: state.ginnahs,
+    kakias: state.kakias,
     // taos: state.taos
   };
 }
