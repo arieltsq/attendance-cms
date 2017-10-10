@@ -1,12 +1,12 @@
 //seed data for Tao
 export const taos = [
   {
-    "name": "Bosh",
-    "role": "Head of Communication"
+    name: "Bosh",
+    role: "Head of Communication"
   },
   {
-    "name": "Delongi",
-    "role": "Head of Logistic"
+    name: "Delongi",
+    role: "Head of Logistic"
   }
 ];
 
