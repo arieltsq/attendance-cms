@@ -1,21 +1,21 @@
-import React, { Component } from "react";
-import Kakia from "./Kakia";
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react'
+import Kakia from './Kakia'
+import { Link } from 'react-router-dom'
 
 // import { Switch, Route } from "react-router-dom";
 
 export default class AllKakia extends Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
 
     // this.state = {
     //   props
     // }
   }
-  componentWillMount() {
-    console.log("testing", this.props.kakias);
+  componentWillMount () {
+    console.log('testing', this.props.kakias)
   }
-  render() {
+  render () {
         // const hello = this.props.hello;
     // const bye = this.props.bye;
 
@@ -29,18 +29,18 @@ export default class AllKakia extends Component {
 
     // } = this.props
 
-    const kakias = this.props.kakias;
+    const kakias = this.props.kakias
     return (
       <div>
         {/* <Link to='/Addkakias'><button>Add Kakias</button></Link> */}
         {
-          kakias.map((kakia, index) => 
-            <Kakia key={index}  
-                   kakia={kakia} 
+          kakias.map((kakia, index) =>
+            <Kakia key={index}
+              kakia={kakia}
              />)
         }
       </div>
-    );
+    )
   }
 }
 

@@ -1,8 +1,8 @@
-export function addGinnah(index, name, school, description) {
-  type: "ADD_GINNAH", index, name, school, description;
+export function addGinnah (index, name, school, description) {
+  type: 'ADD_GINNAH', index, name, school, description
 }
-export function addTao(index, name, school, description) {
-  type: "ADD_TAO", index, name, school, description;
+export function addTao (index, name, school, description) {
+  type: 'ADD_TAO', index, name, school, description
 }
 
 // export function addKakia(index, name, school, description) {
@@ -13,9 +13,9 @@ export function addTao(index, name, school, description) {
 //   description;
 // }
 
-export function addKakia(kakiaDetails) {
+export function addKakia (kakiaDetails) {
   return {
-    type: "ADD_KAKIA",
+    type: 'ADD_KAKIA',
     kakiaDetails
-  };
+  }
 }
