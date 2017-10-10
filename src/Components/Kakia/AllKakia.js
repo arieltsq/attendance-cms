@@ -13,14 +13,33 @@ export default class AllKakia extends Component {
     // }
   }
   componentWillMount() {
-    console.log(this.props.kakias);
+    console.log("testing", this.props.kakias);
   }
   render() {
-    const props = this.props;
+        // const hello = this.props.hello;
+    // const bye = this.props.bye;
+
+    // const {
+    //   // from s
+    //   // kakias,
+    //   // hello,
+    //   // bye
+
+    //   // from d
+
+    // } = this.props
+
+    const kakias = this.props.kakias;
     return (
       <div>
-        <Link to='/Addkakias'><button>Add Kakias</button></Link>
-        {props.kakias.map((kakia, index) => <Kakia key={index} {...props} kakia={kakia} />)}
+        {/* <Link to='/Addkakias'><button>Add Kakias</button></Link> */}
+        {
+          kakias.map((kakia, index) => 
+            <Kakia key={index}  
+                   kakia={kakia} 
+             />)
+        }
+
         
       </div>
     );
