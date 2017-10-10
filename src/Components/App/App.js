@@ -17,9 +17,16 @@ class Main extends Component {
     return (
       <div className='Main'>
         <h1 className='Main-title'> Welcome to Attendance CMS System</h1>
-        <Link to='/Add'><button>Ginnah</button></Link>
-        <Link to='/AddKakias'><button>Add Kakia</button></Link>
+        <Link to='/Add'>
+          <button>Ginnah</button>
+        </Link>
+        <Link to='/AddKakias'>
+          <button>Add Kakia</button>
+        </Link>
         <AllKakia {...this.props} />
+        <Link to='/AddGinahs'>
+          <button>Add Ginnah</button>
+        </Link>
       </div>
     )
   }

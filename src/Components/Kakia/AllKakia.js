@@ -1,17 +1,13 @@
 import React, { Component } from 'react'
 import Kakia from './Kakia'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 
 // import { Switch, Route } from "react-router-dom";
 
 export default class AllKakia extends Component {
-  constructor (props) {
-    super(props)
-
-    // this.state = {
-    //   props
-    // }
-  }
+  // constructor (props) {
+  //   super(props)
+  // }
   componentWillMount () {
     console.log('testing', this.props.kakias)
   }

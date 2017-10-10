@@ -1,14 +1,14 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import { initStore } from './Store'
+// import { initStore } from './Store'
 // routes components
 import InputData from './Components/InputData/InputData'
 import Kakia from './Components/Kakia/AllKakia'
 import App from './Components/App/App'
 import AddKakias from './Components/Kakia/AddKakias'
 
-const storeAndHistory = initStore()
-const history = storeAndHistory[1]
+// const storeAndHistory = initStore()
+// const history = storeAndHistory[1]
 
 export const Routes = () => {
   return (

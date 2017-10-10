@@ -1,6 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { render } from 'react-dom'
 import './index.css'
 
 import { Provider } from 'react-redux'
@@ -16,7 +15,7 @@ import { initStore } from './Store'
 
 const storeAndHistory = initStore()
 const store = storeAndHistory[0]
-const history = storeAndHistory[1]
+// const history = storeAndHistory[1]
 
 ReactDOM.render(
   <Provider store={store}>
