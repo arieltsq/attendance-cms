@@ -39,8 +39,6 @@ export default class AllKakia extends Component {
                    kakia={kakia} 
              />)
         }
-
-        
       </div>
     );
   }
