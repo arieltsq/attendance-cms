@@ -21,34 +21,44 @@
 .Main-intro {
   font-size: large;
 }
-.Main-Navbar{
-  background-color:linen;
+.Main-Navbar {
+  background-color: linen;
 }
-.Main-Navbar Button{
- background-color:lightgoldenrodyellow;
- padding: 10px;
+.Main-Navbar Button {
+  background-color: lightgoldenrodyellow;
+  padding: 10px;
 }
 
 /*Ginnah Component*/
-.AllGinnah{
+.AllGinnah {
   padding: 30px;
 }
-.Ahref-link{
+.Ahref-link {
   font-size: 10px;
 }
-.Ginnah-Display{
+.Ginnah-Display {
   font-size: 12px;
 }
-.AllGinnahs-container{
-  
+.AllGinnahs-container {
 }
-.AllGinnahs-Add{
+.AllGinnahs-Add {
   float: left;
 }
-.AllGinnahs-Display{
+.AllGinnahs-Display {
   float: right;
 }
+.AddGinnah-form{
+  font-size: 12px; 
+}
+.AddGinnah-form button {
+  margin-top: 20px;
+  width: 100%;
+}
 @keyframes Main-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }

@@ -4,9 +4,9 @@ const AddGinnah = props => {
   console.log('Props from AddGinnah', props)
   return (
     <div>
-      <form onSubmit={props.addGinnahSubmit}>
+      <form onSubmit={props.addGinnahSubmit} className='AddGinnah-form'>
         <label>
-          Name:
+          <p><b>Name:</b></p>
           <input
             name='name'
             value={props.name}
@@ -16,7 +16,7 @@ const AddGinnah = props => {
         </label>
         <br />
         <label>
-          School:
+          <p><b>School:</b></p>
           <input
             name='school'
             value={props.schools}
@@ -26,7 +26,7 @@ const AddGinnah = props => {
         </label>
         <br />
         <label>
-          Description:
+          <p><b>Description:</b></p>
           <input
             name='description'
             value={props.description}

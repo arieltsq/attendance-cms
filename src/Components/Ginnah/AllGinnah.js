@@ -1,14 +1,14 @@
+// Basic Components import
 import React, { Component } from "react";
-import { bindActionCreators } from "redux";
-// import { Link } from 'react-router-dom'
-import { connect } from "react-redux";
-import * as actionCreators from "../../actions/actions";
 import { Link } from "react-router-dom";
 // Dumb Components
 import AddGinnah from "./AddGinnah";
 import Ginnah from "./Ginnah";
-
-// import { Switch, Route } from "react-router-dom";
+// Binding to the store
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+// Binding Actions 
+import * as actionCreators from "../../actions/actions";
 
 class AllGinnah extends Component {
   constructor(props) {
@@ -17,7 +17,8 @@ class AllGinnah extends Component {
       name: "",
       school: "",
       description: "",
-      isaddGinnahSubmit: false
+      isaddGinnahSubmit: false,
+      ginnahIndex: ''
     };
   }
 
@@ -52,6 +53,13 @@ class AllGinnah extends Component {
     // this.setState(state=>({...state, isSend: true}))
   };
 
+  deleteGinnahClick = (index) => {
+    // e.preventDefault();
+    console.log("delete clicked");
+    console.log(`${index} clicked`)
+
+    this.props.deleteGinnah(index)    
+  };
   render() {
     const { ginnahs } = this.props;
     return (
@@ -73,7 +81,12 @@ class AllGinnah extends Component {
           <div className="AllGinnahs-Display">
             <h2>All Ginnahs</h2>
             {ginnahs.map((ginnah, index) =>
-              <Ginnah key={index} ginnah={ginnah} />
+              <Ginnah
+                key={index}
+                ginnah={ginnah}
+                index={this.state.ginnahIndex}
+                onDelete={()=>this.deleteGinnahClick(index)}
+              />
             )}
           </div>
         </div>

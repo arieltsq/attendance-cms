@@ -18,7 +18,7 @@ const Ginnah = props => {
         </p>
       </article>
       <button>Edit Ginnah</button>
-      <button>Delete Ginnah</button>
+      <button onClick={props.onDelete}>Delete Ginnah</button>
     </div>
   )
 }
