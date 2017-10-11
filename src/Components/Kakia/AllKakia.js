@@ -15,15 +15,15 @@ export default class AllKakia extends Component {
         // const hello = this.props.hello;
     // const bye = this.props.bye;
 
-    // const {
-    //   // from s
-    //   // kakias,
-    //   // hello,
-    //   // bye
+    const {
+      // from s
+      // kakias,
+      // hello,
+      // bye
 
-    //   // from d
+      // from d
 
-    // } = this.props
+    } = this.props
 
     const kakias = this.props.kakias
     return (

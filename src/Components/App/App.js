@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import * as actionCreators from '../../actions/actions'
 import { Link } from 'react-router-dom'
 import AllKakia from '../Kakia/AllKakia'
+// import AllGinnah from '../Ginnah/AllGinnah'
 import './App.css'
 // import * as actionCreators from "../../Actions/ActionsCreator";
 // import fire from './fire';
@@ -17,16 +18,19 @@ class Main extends Component {
     return (
       <div className='Main'>
         <h1 className='Main-title'> Welcome to Attendance CMS System</h1>
-        <Link to='/Add'>
-          <button>Ginnah</button>
-        </Link>
-        <Link to='/AddKakias'>
-          <button>Add Kakia</button>
-        </Link>
+        <div className='Main-Navbar'>
+          <Link to='/Add'>
+            <button>Add Ginnah</button>
+          </Link>
+          <Link to='/AddKakias'>
+            <button>Add Kakia</button>
+          </Link>
+          <Link to='/Ginnah'>
+            <button>Access Ginnah Page</button>
+          </Link>
+        </div>
         <AllKakia {...this.props} />
-        <Link to='/AddGinahs'>
-          <button>Add Ginnah</button>
-        </Link>
+        {/* <AllGinnah {...this.props} /> */}
       </div>
     )
   }

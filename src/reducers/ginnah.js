@@ -2,7 +2,7 @@
    switch (action.type) {
      case 'ADD_GINNAH':
        console.log('hello')
-       return state
+       return [ ...state, { name: action.name, school: action.school, description: action.description}]
     // case "DELETE_GINNAH":
     //   return state;
     // case "EDIT_GINNAH":
