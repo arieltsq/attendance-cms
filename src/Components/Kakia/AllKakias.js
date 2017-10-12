@@ -1,11 +1,13 @@
+// react component
 import React, { Component } from 'react'
+// redux store connect, action and bind action creators
 import { connect } from 'react-redux';
-import { addKakia } from '../../actions/actions';
-import { removeKakia } from '../../actions/actions';
-import { editKakia } from '../../actions/actions';
+import * as actionCreators from '../../actions/actions';
+import { bindActionCreators } from 'redux';
+//react-router link
 import { Link } from 'react-router-dom';
 //Dumb components
-import AddKakias from './AddKakias';
+import Form from './Form';
 import Kakia from './Kakia';
 
 class AllKakias extends Component {
@@ -14,15 +16,16 @@ class AllKakias extends Component {
         this.state = {
             name: '',
             school: '',
-            showAddKakia: false,
-            changeAddtoEdit: false
+            showForm: false,
+            statusLabel: "",
+            editIndex: "",
+            editStatus: false
         }
     }
     onChange = (e) => {
         let currentState = this.state;
         let key = e.target.name;
         let value = e.target.value;
-
         currentState[key] = value;
         this.setState(state => ({
             ...state,
@@ -32,29 +35,26 @@ class AllKakias extends Component {
         //     [e.target.name]: e.target.value
         // });
     }
-    onAddSubmit = (e) => {
+    submitKakiaChange = (e) => {
         e.preventDefault();
-        //console.log(this.props)
-        // console.log(this.state)
-        //console.log("clicking submit from addkakias.js")
-        //console.log("onsubmit method", this.state.school)
-        this.props.addKakia(this.state.name, this.state.school);
+        this.state.editStatus
+        ? this.props.editKakia(
+            this.state.name,
+            this.state.school,
+            this.state.editIndex
+          )
+        : this.props.addKakia(
+            this.state.name,
+            this.state.school
+          );
 
         this.setState(state => ({
             ...state,
             name: '',
-            school: ''
+            school: '',
+            showForm: false
         }));
         //console.log("this is props.kakias", this.props.kakias);
-    }
-    onEditSubmit = (e) => {
-        e.preventDefault();
-        this.props.editKakia(this.state.name, this.state.school);
-        this.setState(state => ({
-            ...state,
-            name:'',
-            school: ''
-        }));
     }
     onDelete = (value) => {
         // e.preventDefault();
@@ -67,54 +67,54 @@ class AllKakias extends Component {
         //console.log(this.props)
         this.props.removeKakia(value);
     }
-    changeAddtoEdit = () => {
-        if (this.state.changeAddtoEdit) {
-        }else {
-            this.setState({ changeAddtoEdit: true })
-        }
-    }
     onEdit = (index) => {
-        console.log("on edit de index", index)
-        console.log(this.props.kakias)
-        let kakiaProps = this.props.kakias
-        for (let i of kakiaProps) {
-            if(kakiaProps.indexOf(i) === index) {
-                console.log(i)
+        //console.log("on edit de index", index)
+        //console.log(this.props.kakias)
+        let kakiaProps = this.props.kakias;
+        this.setState({ statusLabel: "Edit" });
+        for (let key of kakiaProps) {
+            if(kakiaProps.indexOf(key) === index) {
+                console.log(key)
                 this.setState(state => ({
                     ...state,
-                    name: i.name,
-                    school: i.school
+                    name: key.name,
+                    school: key.school,
+                    editIndex: index,
+                    showForm: true,
+                    editStatus: true
                 }));
             }
         }
-        this.setState({ showAddKakia: true });
-        this.changeAddtoEdit();
     }
     showAddKakiaComponent = () => {
-        this.setState({ showAddKakia: true });
+        this.setState({ showForm: true });
       };
     render() {
         const { kakias } = this.props;
        // const index = this.props.kakias.findIndex((x) => x == );
         return (
             <div className="AllKakia">
-                <Link to="/" className="Ahref-link">Back to Home</Link>
+                <Link to="/" className="Ahref-link">
+                    Back to Home
+                </Link>
                 <div className="AllKakias-container">
-                    {this.state.showAddKakia ? 
-                    <div className="AllKakias-Add">
-                        {this.state.changeAddtoEdit ? <h2>Edit kakia</h2> : <h2>Add kakia</h2> }
-                        <AddKakias onChange={this.onChange} 
+                    <div>
+                        {this.state.showForm ? 
+                        <div className="AllKakias-Add">
+                            {this.state.statusLabel === "Edit"
+                            ? <h2>Edit kakia</h2> 
+                            : <h2>Add kakia</h2> }
+                            <Form onChange={this.onChange} 
                                     name={this.state.name} 
                                     school={this.state.school} 
-                                    onAddSubmit={this.onAddSubmit}
-                                    onEditSubmit={this.onEditSubmit}
-                                    changeAddtoEdit={this.changeAddtoEdit}
-                                    changeAddtoEditState={this.state.changeAddtoEdit}/>
-                    </div>
-                    : <button onClick={this.showAddKakiaComponent}
+                                    submitBtn={this.submitKakiaChange}/>
+                        </div>
+                        : <button onClick={this.showAddKakiaComponent}
                                 className="ShowKakia-Button">
-                        Add kakia
-                        </button>}
+                            Add kakia
+                            </button>}
+                    </div>
+
                     <div className="AllKakias-Display">
                         <h2>Lists of Kakias</h2>
                         {
@@ -141,11 +141,8 @@ const mapStateToProps = (state) => {
 }
 // dispatching the action to the store
 const mapDispatchToProps = (dispatch) => {
-    return {
-        addKakia: (name, school) => {dispatch(addKakia(name, school))},
-        removeKakia: (index) => {dispatch(removeKakia(index))}
-    }
-}
+    return bindActionCreators(actionCreators, dispatch);
+  }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AllKakias);
 

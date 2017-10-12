@@ -1,3 +1,4 @@
+// Ginnah Actions
 export function addGinnah (name, school, description) {
   return {
     type: 'ADD_GINNAH',
@@ -21,20 +22,13 @@ export function editGinnah (name, school, description, index) {
     index
   }
 }
+// Tao Actions
 export function addTao (index, name, school, description) {
   return {
     type: 'ADD_TAO', index, name, school, description
   }
 }
-
-// export function addKakia(index, name, school, description) {
-//   type: "ADD_KAKIA",
-//   index,
-//   name,
-//   school,
-//   description;
-// }
-
+// Kakia Actions
 export function addKakia (name, school) {
   return {
     type: 'ADD_KAKIA',
@@ -42,18 +36,17 @@ export function addKakia (name, school) {
     school
   }
 }
-
 export function removeKakia (index) {
   return {
     type: 'REMOVE_KAKIA',
     index
   }
 }
-
-export function editKakia (name, school) {
+export function editKakia (name, school, index) {
   return {
     type: 'EDIT_KAKIA',
     name,
-    school
+    school,
+    index
   }
 }
