@@ -7,18 +7,18 @@ import Ginnah from "./Ginnah";
 // Binding to the store
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-// Binding Actions 
+// Binding Actions
 import * as actionCreators from "../../actions/actions";
 
 class AllGinnah extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      showAddGinnah: false,
       name: "",
       school: "",
       description: "",
-      isaddGinnahSubmit: false,
-      ginnahIndex: ''
+      ginnahIndex: ""
     };
   }
 
@@ -48,17 +48,39 @@ class AllGinnah extends Component {
       ...state,
       name: "",
       school: "",
-      description: ""
+      description: "",
+      showAddGinnah: false
     }));
     // this.setState(state=>({...state, isSend: true}))
   };
 
-  deleteGinnahClick = (index) => {
+  deleteGinnahClick = index => {
     // e.preventDefault();
     console.log("delete clicked");
-    console.log(`${index} clicked`)
+    console.log(`${index} clicked`);
 
-    this.props.deleteGinnah(index)    
+    this.props.deleteGinnah(index);
+  };
+  editGinnahClick = (index, name) => {
+    console.log("edit triggerd for", index, name);
+    // this.props.ginnahs.keys(index).forEach(function(element) {
+    //   console.log("lopping: element");
+    // });
+
+    // REQUIRES ECMASCRIPT 2015+
+    // const myStringArray = ["Hello", "World"];
+    const ginnahProps = this.props.ginnahs
+    for (let s of ginnahProps) {
+     if(ginnahProps.indexOf(s) === index){
+       console.log(s)
+     }
+    }
+    //
+    console.log("editginnah", this.props.ginnahs);
+    // this.props.editGinnah(index)
+  };
+  showAddGinnahComponent = () => {
+    this.setState({ showAddGinnah: true });
   };
   render() {
     const { ginnahs } = this.props;
@@ -68,16 +90,26 @@ class AllGinnah extends Component {
           Back To Home
         </Link>
         <div className="AllGinnahs-container">
-          <div className="AllGinnahs-Add">
-            <h2>Add Ginnahs</h2>
-            <AddGinnah
-              name={this.state.name}
-              schools={this.state.school}
-              description={this.state.description}
-              onChange={this.updateChanges}
-              addGinnahSubmit={this.addGinnahSubmit}
-            />
+          <div>
+            {this.state.showAddGinnah
+              ? <div className="AllGinnahs-Add">
+                  <h2>Add Ginnahs</h2>
+                  <AddGinnah
+                    name={this.state.name}
+                    schools={this.state.school}
+                    description={this.state.description}
+                    onChange={this.updateChanges}
+                    addGinnahSubmit={this.addGinnahSubmit}
+                  />
+                </div>
+              : <button
+                  onClick={this.showAddGinnahComponent}
+                  className="ShowGinnah-Button"
+                >
+                  Add Ginnah
+                </button>}
           </div>
+
           <div className="AllGinnahs-Display">
             <h2>All Ginnahs</h2>
             {ginnahs.map((ginnah, index) =>
@@ -85,7 +117,8 @@ class AllGinnah extends Component {
                 key={index}
                 ginnah={ginnah}
                 index={this.state.ginnahIndex}
-                onDelete={()=>this.deleteGinnahClick(index)}
+                onDelete={() => this.deleteGinnahClick(index)}
+                onEdit={() => this.editGinnahClick(index)}
               />
             )}
           </div>

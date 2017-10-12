@@ -54,6 +54,11 @@
   margin-top: 20px;
   width: 100%;
 }
+.ShowGinnah-Button{
+  margin-top: 10px;
+  height: 50px;
+  width: 30%;
+}
 @keyframes Main-logo-spin {
   from {
     transform: rotate(0deg);
