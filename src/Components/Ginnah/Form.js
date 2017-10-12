@@ -27,7 +27,7 @@ const AddGinnah = props => {
         <br />
         <label>
           <p><b>Description:</b></p>
-          <input
+          <textarea
             name='description'
             value={props.description}
             type='text'

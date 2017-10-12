@@ -17,7 +17,7 @@ const Ginnah = props => {
           {props.ginnah.description}.
         </p>
       </article>
-      <button onClick={() => props.onEdit(props.ginnah.name)}>Edit Ginnah</button>
+      <button onClick={props.onEdit}>Edit Ginnah</button>
       <button onClick={props.onDelete}>Delete Ginnah</button>
     </div>
   )

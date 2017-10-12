@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 // Dumb Components
-import AddGinnah from "./AddGinnah";
+import Form from "./Form";
 import Ginnah from "./Ginnah";
 // Binding to the store
 import { bindActionCreators } from "redux";
@@ -14,21 +14,22 @@ class AllGinnah extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showAddGinnah: false,
+      showForm: false,
       name: "",
       school: "",
       description: "",
-      ginnahIndex: ""
+      statusLabel: "",
+      editIndex: "",
+      editStatus: false
     };
   }
 
   updateChanges = e => {
-    let state = this.state;
+    let currentState = this.state;
     let key = e.target.name;
     let value = e.target.value;
-
-    state[key] = value;
-    this.setState(state);
+    currentState[key] = value;
+    this.setState(state => ({ ...state, currentState }));
   };
 
   display = () => {
@@ -38,18 +39,24 @@ class AllGinnah extends Component {
   addGinnahSubmit = e => {
     e.preventDefault();
     console.log("addGinnahSubmit is clicked");
-    console.log(this.state.name, this.state.school);
-    this.props.addGinnah(
-      this.state.name,
-      this.state.school,
-      this.state.description
-    );
+    this.state.editStatus
+      ? this.props.editGinnah(
+          this.state.name,
+          this.state.school,
+          this.state.description,
+          this.state.editIndex
+        )
+      : this.props.addGinnah(
+          this.state.name,
+          this.state.school,
+          this.state.description
+        );
     this.setState(state => ({
       ...state,
       name: "",
       school: "",
       description: "",
-      showAddGinnah: false
+      showForm: false
     }));
     // this.setState(state=>({...state, isSend: true}))
   };
@@ -61,26 +68,26 @@ class AllGinnah extends Component {
 
     this.props.deleteGinnah(index);
   };
-  editGinnahClick = (index, name) => {
-    console.log("edit triggerd for", index, name);
-    // this.props.ginnahs.keys(index).forEach(function(element) {
-    //   console.log("lopping: element");
-    // });
-
-    // REQUIRES ECMASCRIPT 2015+
-    // const myStringArray = ["Hello", "World"];
-    const ginnahProps = this.props.ginnahs
-    for (let s of ginnahProps) {
-     if(ginnahProps.indexOf(s) === index){
-       console.log(s)
-     }
+  editGinnahClick = index => {
+    const ginnahProps = this.props.ginnahs;
+    this.setState({ statusLabel: "Edit" });
+    for (let key of ginnahProps) {
+      if (ginnahProps.indexOf(key) === index) {
+        console.log(key);
+        this.setState(state => ({
+          ...state,
+          name: key.name,
+          school: key.school,
+          description: key.description,
+          editIndex: index,
+          showForm: true,
+          editStatus: true
+        }));
+      }
     }
-    //
-    console.log("editginnah", this.props.ginnahs);
-    // this.props.editGinnah(index)
   };
   showAddGinnahComponent = () => {
-    this.setState({ showAddGinnah: true });
+    this.setState({ showForm: true });
   };
   render() {
     const { ginnahs } = this.props;
@@ -91,10 +98,12 @@ class AllGinnah extends Component {
         </Link>
         <div className="AllGinnahs-container">
           <div>
-            {this.state.showAddGinnah
+            {this.state.showForm
               ? <div className="AllGinnahs-Add">
-                  <h2>Add Ginnahs</h2>
-                  <AddGinnah
+                  {this.state.statusLabel === "Edit"
+                    ? <h2>Edit Ginnah</h2>
+                    : <h2>Add Ginnah</h2>}
+                  <Form
                     name={this.state.name}
                     schools={this.state.school}
                     description={this.state.description}
@@ -116,7 +125,6 @@ class AllGinnah extends Component {
               <Ginnah
                 key={index}
                 ginnah={ginnah}
-                index={this.state.ginnahIndex}
                 onDelete={() => this.deleteGinnahClick(index)}
                 onEdit={() => this.editGinnahClick(index)}
               />

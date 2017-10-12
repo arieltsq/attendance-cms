@@ -19,8 +19,19 @@ function ginnahReducer (state = [], action) {
         ...state.slice(action.index + 1)
       ]
     case 'EDIT_GINNAH':
+      console.log(action.name, action.index)
       console.log('Editing Ginnah Triggered')
-      return state
+      const index = action.index
+      return [
+        ...state.slice(0, index), // before the one we are updating (referencing to the old one)
+        {
+          ...state[index],
+          name: action.name,
+          school: action.school,
+          description: action.description
+        }, // new number
+        ...state.slice(index + 1) // after the one we are updating (referencing to the old one)
+      ]
     default:
       return state
   }
