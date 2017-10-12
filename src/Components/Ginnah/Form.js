@@ -4,7 +4,7 @@ const AddGinnah = props => {
   console.log('Props from AddGinnah', props)
   return (
     <div>
-      <form onSubmit={props.addGinnahSubmit} className='AddGinnah-form'>
+      <form onSubmit={props.submitGinnahChange} className='AddGinnah-form'>
         <label>
           <p><b>Name:</b></p>
           <input
@@ -27,7 +27,7 @@ const AddGinnah = props => {
         <br />
         <label>
           <p><b>Description:</b></p>
-          <input
+          <textarea
             name='description'
             value={props.description}
             type='text'

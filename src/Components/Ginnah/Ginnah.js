@@ -6,7 +6,6 @@ const Ginnah = props => {
     <div className='Ginnah-Display'>
       <article>
         <h4>Student's Name: {props.ginnah.name}</h4>
-
       </article>
       <article>
         <p><b>Student's School: </b>{props.ginnah.school}</p>
@@ -17,7 +16,7 @@ const Ginnah = props => {
           {props.ginnah.description}.
         </p>
       </article>
-      <button onClick={() => props.onEdit(props.ginnah.name)}>Edit Ginnah</button>
+      <button onClick={props.onEdit}>Edit Ginnah</button>
       <button onClick={props.onDelete}>Delete Ginnah</button>
     </div>
   )
