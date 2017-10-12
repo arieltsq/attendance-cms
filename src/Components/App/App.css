@@ -59,11 +59,31 @@
   height: 50px;
   width: 30%;
 }
-@keyframes Main-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+/*Kakia Component*/
+.AllKakia {
+  padding: 30px;
+}
+.Kakia-Display {
+  font-size: 12px;
+}
+.AllKakias-container {
+}
+.AllKakias-Add {
+  float: left;
+}
+.AllKakias-Display {
+  float: right;
+}
+.AddKakia-form{
+  font-size: 12px; 
+}
+.AddKakia-form button {
+  margin-top: 20px;
+  width: 100%;
+}
+.ShowKakia-Button{
+  margin-top: 10px;
+  height: 50px;
+  width: 30%;
 }

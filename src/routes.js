@@ -16,7 +16,8 @@ export const Routes = () => {
       <Switch>
         <Route exact path='/' component={App} />
         <Route path='/Add' component={InputData} />
-        <Route exact path='/Kakias' component={Kakia} />
+        <Route exact path='/Tao' />
+        <Route exact path='/Kakia' component={Kakia} />
         <Route exact path='/Ginnah' component={Ginnah} />
       </Switch>
     </Router>
