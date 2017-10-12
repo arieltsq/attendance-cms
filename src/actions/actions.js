@@ -1,6 +1,24 @@
-export function addGinnah (index, name, school, description) {
+export function addGinnah (name, school, description) {
   return {
-    type: 'ADD_GINNAH', index, name, school, description
+    type: 'ADD_GINNAH',
+    name,
+    school,
+    description
+  }
+}
+export function deleteGinnah (index) {
+  return {
+    type: 'DELETE_GINNAH',
+    index
+  }
+}
+export function editGinnah (name, school, description, index) {
+  return {
+    type: 'EDIT_GINNAH',
+    name,
+    school,
+    description,
+    index
   }
 }
 export function addTao (index, name, school, description) {
