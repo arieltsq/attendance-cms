@@ -36,7 +36,7 @@ class AllGinnah extends Component {
     console.log("display function");
   };
 
-  addGinnahSubmit = e => {
+  submitGinnahChange = e => {
     e.preventDefault();
     console.log("addGinnahSubmit is clicked");
     this.state.editStatus
@@ -72,7 +72,7 @@ class AllGinnah extends Component {
     const ginnahProps = this.props.ginnahs;
     this.setState({ statusLabel: "Edit" });
     for (let key of ginnahProps) {
-      if (ginnahProps.indexOf(key) == index) {
+      if (ginnahProps.indexOf(key) === index) {
         console.log(key);
         this.setState(state => ({
           ...state,
@@ -108,7 +108,7 @@ class AllGinnah extends Component {
                     schools={this.state.school}
                     description={this.state.description}
                     onChange={this.updateChanges}
-                    addGinnahSubmit={this.addGinnahSubmit}
+                    submitGinnahChange={this.submitGinnahChange}
                   />
                 </div>
               : <button
