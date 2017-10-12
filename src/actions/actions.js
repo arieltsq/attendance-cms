@@ -23,9 +23,25 @@ export function editGinnah (name, school, description, index) {
   }
 }
 // Tao Actions
-export function addTao (index, name, school, description) {
+export function addTao (name, role) {
   return {
-    type: 'ADD_TAO', index, name, school, description
+    type: 'ADD_TAO',
+    name,
+    role
+  }
+}
+export function deleteTao (index) {
+  return {
+    type: 'DELETE_TAO',
+    index
+  }
+}
+export function editTao (name, role, index) {
+  return {
+    type: 'EDIT_TAO',
+    name,
+    role,
+    index
   }
 }
 // Kakia Actions
