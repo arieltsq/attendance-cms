@@ -35,9 +35,17 @@ export function addTao (index, name, school, description) {
 //   description;
 // }
 
-export function addKakia (kakiaDetails) {
+export function addKakia (name, school) {
   return {
     type: 'ADD_KAKIA',
-    kakiaDetails
+    name,
+    school
+  }
+}
+
+export function removeKakia (index) {
+  return {
+    type: 'REMOVE_KAKIA',
+    index
   }
 }
