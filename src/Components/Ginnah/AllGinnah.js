@@ -72,7 +72,7 @@ class AllGinnah extends Component {
     const ginnahProps = this.props.ginnahs;
     this.setState({ statusLabel: "Edit" });
     for (let key of ginnahProps) {
-      if (ginnahProps.indexOf(key) === index) {
+      if (ginnahProps.indexOf(key) == index) {
         console.log(key);
         this.setState(state => ({
           ...state,
