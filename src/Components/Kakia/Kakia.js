@@ -7,7 +7,7 @@ const Kakia2 = props => {
     <div>
       <p>Hello {props.kakia.name}, You are from {props.kakia.school}.</p>
       <button>Edit Kakia</button>
-      <button onClick={props.onClick}>Delete Kakia</button>
+      <button onClick={props.onDelete}>Delete Kakia</button>
     </div>
   )
 }

@@ -17,33 +17,36 @@ class AllKakias extends Component {
         }
     }
     onChange = (e) => {
-        let state = this.state;
+        let currentState = this.state;
         let key = e.target.name;
         let value = e.target.value;
 
-        state[key] = value;
-        this.setState(state);
+        currentState[key] = value;
+        this.setState(state => ({
+            ...state,
+            currentState
+        }));
         // this.setState({
         //     [e.target.name]: e.target.value
         // });
-
-        console.log(state);
     }
     onSubmit = (e) => {
         e.preventDefault();
         console.log(this.props)
         // console.log(this.state)
         console.log("clicking submit from addkakias.js")
-console.log("onsubmit method", this.state.school)
+        console.log("onsubmit method", this.state.school)
         this.props.addKakia(this.state.name, this.state.school);
 
-        this.setState({
+        this.setState(state => ({
+            ...state,
             name: '',
-            school: ''
-        });
+            school: '',
+            showAddKakia: false
+        }));
         console.log("this is props.kakias", this.props.kakias);
     }
-    onClicked = (value) => {
+    onDelete = (value) => {
         // e.preventDefault();
         // console.log("clicked", e);
         console.log("VALUE.CLICKED", value);
@@ -54,27 +57,40 @@ console.log("onsubmit method", this.state.school)
         console.log(this.props)
         this.props.removeKakia(value);
     }
+    showAddKakiaComponent = () => {
+        this.setState({ showAddKakia: true });
+      };
     render() {
         const { kakias } = this.props;
        // const index = this.props.kakias.findIndex((x) => x == );
         console.log(this)
         return (
-            <div>
-                <div className="LeftSide">
-                    <Link to="/"><p>Back to Home</p></Link>
-                    <h2>Add kakias</h2>
-                    <AddKakias onChange={this.onChange} 
-                                name={this.state.name} 
-                                school={this.state.school} 
-                                onSubmit={this.onSubmit}/>
-                </div>
-                <div className="RightSide">
-                    <h2>Lists of kakias</h2>
-                    {
-                        kakias.map((kakia, index) =>
-                            <Kakia key={index} kakia={kakia} index={index} onClick={()=> this.onClicked(index)}
-                        />)
-                    }
+            <div className="AllKakia">
+                <Link to="/" className="Ahref-link">Back to Home</Link>
+                <div className="AllKakias-container">
+                    {this.state.showAddKakia ? 
+                    <div className="AllKakias-Add">
+                        <h2>Add kakias</h2>
+                        <AddKakias onChange={this.onChange} 
+                                    name={this.state.name} 
+                                    school={this.state.school} 
+                                    onSubmit={this.onSubmit}/>
+                    </div>
+                    : <button onClick={this.showAddKakiaComponent}
+                                className="ShowKakia-Button">
+                        Add kakia
+                        </button>}
+                    <div className="AllKakias-Display">
+                        <h2>Lists of Kakias</h2>
+                        {
+                            kakias.map((kakia, index) =>
+                                <Kakia key={index} 
+                                    kakia={kakia} 
+                                    index={index} 
+                                    onDelete={()=> this.onDelete(index)}
+                            />)
+                        }
+                    </div>
                 </div>
             </div>
         )

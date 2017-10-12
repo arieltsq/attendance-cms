@@ -20,16 +20,18 @@ class Main extends Component {
         <h1 className='Main-title'> Welcome to Attendance CMS System</h1>
         <div className='Main-Navbar'>
           <Link to='/Add'>
-            <button>Add Ginnah</button>
+            <button>Add Ginnah(firebase)</button>
           </Link>
-          <Link to='/AddKakias'>
-            <button>Add Kakia</button>
+          <Link to='/Tao'>
+            <button>Access Tao Page</button>
+          </Link>
+          <Link to='/Kakia'>
+            <button>Access Kakia Page</button>
           </Link>
           <Link to='/Ginnah'>
             <button>Access Ginnah Page</button>
           </Link>
         </div>
-        <AllKakia {...this.props} />
         {/* <AllGinnah {...this.props} /> */}
       </div>
     )
