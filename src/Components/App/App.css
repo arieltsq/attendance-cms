@@ -87,3 +87,34 @@
   height: 50px;
   width: 30%;
 }
+
+/*Tao Components*/
+.AllTao {
+  padding: 30px;
+}
+.Ahref-link {
+  font-size: 10px;
+}
+.Tao-Display {
+  font-size: 12px;
+}
+.AllTaos-container {
+}
+.AllTaos-Add {
+  float: left;
+}
+.AllTaos-Display {
+  float: right;
+}
+.AddTao-form{
+  font-size: 12px; 
+}
+.AddTao-form button {
+  margin-top: 20px;
+  width: 100%;
+}
+.ShowTao-Button{
+  margin-top: 10px;
+  height: 50px;
+  width: 30%;
+}
