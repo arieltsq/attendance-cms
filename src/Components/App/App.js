@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as actionCreators from '../../actions/actions'
 import { Link } from 'react-router-dom'
-import AllKakia from '../Kakia/AllKakia'
+import AllKakia from '../Kakia/AllKakias'
 import './App.css'
 // import * as actionCreators from "../../Actions/ActionsCreator";
 // import fire from './fire';
@@ -20,10 +20,9 @@ class Main extends Component {
         <Link to='/Add'>
           <button>Ginnah</button>
         </Link>
-        <Link to='/AddKakias'>
-          <button>Add Kakia</button>
+        <Link to='/Kakias'>
+          <button>Kakia</button>
         </Link>
-        <AllKakia {...this.props} />
         <Link to='/AddGinahs'>
           <button>Add Ginnah</button>
         </Link>
