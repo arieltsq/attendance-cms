@@ -49,3 +49,11 @@ export function removeKakia (index) {
     index
   }
 }
+
+export function editKakia (name, school) {
+  return {
+    type: 'EDIT_KAKIA',
+    name,
+    school
+  }
+}

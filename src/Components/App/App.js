@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as actionCreators from '../../actions/actions'
 import { Link } from 'react-router-dom'
-import AllKakia from '../Kakia/AllKakia'
+// import AllKakia from '../Kakia/AllKakia'
 // import AllGinnah from '../Ginnah/AllGinnah'
 import './App.css'
 // import * as actionCreators from "../../Actions/ActionsCreator";

@@ -24,7 +24,8 @@ import React from 'react'
 const AddKakia = (props) => {
   return (
     <div>
-      <form onSubmit={props.onSubmit} className='AddKakia-form'>
+      {props.changeAddtoEditState
+      ? <form onSubmit={props.onEditSubmit} className='AddKakia-form'>
         <label>
           <p><b>Name:</b></p>
           <input type='text' name='name' placeholder="Kakia's name" onChange={props.onChange} value={props.name} />
@@ -35,8 +36,21 @@ const AddKakia = (props) => {
           <input type='text' name='school' value={props.school} placeholder="Kakia's School" onChange={props.onChange} />
         </label>
         <br />
-        <button>Add Kakia</button>
+        <button>Edit Kakia</button>
       </form>
+      : <form onSubmit={props.onAddSubmit} className='AddKakia-form'>
+        <label>
+          <p><b>Name:</b></p>
+          <input type='text' name='name' placeholder="Kakia's name" onChange={props.onChange} value={props.name} />
+        </label>
+        <br />
+        <label>
+          <p><b>School:</b></p>
+          <input type='text' name='school' value={props.school} placeholder="Kakia's School" onChange={props.onChange} />
+        </label>
+        <br />
+        <button onClick={props.changeAddtoEdit}>Add Kakia</button>
+      </form> }
     </div>
   )
 }

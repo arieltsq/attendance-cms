@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Ginnah = props => {
-  console.log('props from Ginnah.js', props)
+  console.log('props from Ginnah.js', props.index)
   return (
     <div className='Ginnah-Display'>
       <article>
