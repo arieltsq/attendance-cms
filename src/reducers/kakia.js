@@ -1,7 +1,7 @@
 function KakiaReducer (state = [], action) {
   switch (action.type) {
     case 'ADD_KAKIA':
-      console.log('hello from kakia.js reducer', action.school)
+      // console.log('hello from kakia's reducer', action.school)
       return [...state, {
         name: action.name,
         school: action.school
@@ -15,9 +15,12 @@ function KakiaReducer (state = [], action) {
       ]
       break
 
-      // case "EDIT_KAKIA":
-      //   return state;
-      //  break;
+    case 'EDIT_KAKIA':
+      console.log('im at edit')
+      return [
+      ...state
+    ]
+      break
     default:
       return state
   }
