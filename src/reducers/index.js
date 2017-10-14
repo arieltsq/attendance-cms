@@ -9,12 +9,15 @@ import { routerReducer } from 'react-router-redux'
 import ginnahReducer from './ginnah'
 import taoReducer from './tao'
 import kakiaReducer from './kakia'
+// importing firebase reducer
+import { firebaseStateReducer } from 'react-redux-firebase'
 
 const rootReducer = combineReducers({
   ginnahs: ginnahReducer,
   taos: taoReducer,
   kakias: kakiaReducer,
-  routing: routerReducer
+  routing: routerReducer,
+  firebase: firebaseStateReducer
 })
 
 export default rootReducer

@@ -4,27 +4,39 @@ import { createStore } from 'redux'
 // import the root reducer
 import createHistory from 'history/createBrowserHistory'
 import rootReducer from './reducers/index'
-
 // importing seed data
 import kakias from './data/kakias'
 import ginnahs from './data/ginnahs'
 import taos from './data/taos'
 
+// firebase import
+import { reactReduxFirebase } from 'react-redux-firebase'
+import { compose } from 'redux'
+// import firebaseConfig from './fire'
+
 const defaultState = {
-  ginnahs,
-  kakias,
-  taos
+ 
+}
+var firebaseConfig = { /* COPY THE ACTUAL CONFIG FROM FIREBASE CONSOLE */
+  apiKey: 'AIzaSyCtMZDjmlQeN2xZvekjVGt_ZFCJgSY0iIM',
+  authDomain: 'attendance-d1ba0.firebaseapp.com',
+  databaseURL: 'https://attendance-d1ba0.firebaseio.com',
+  projectId: 'attendance-d1ba0',
+  storageBucket: 'attendance-d1ba0.appspot.com',
+  messagingSenderId: '955969681537'
 }
 
-console.log(defaultState)
+const createStoreWithFirebase = compose(
+  reactReduxFirebase(firebaseConfig)
+)(createStore)
 
 export let initStore = () => {
   const history = createHistory()
-  const store = createStore(
-        rootReducer,
-        defaultState,
-        window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-      )
+  const store = createStoreWithFirebase(
+    rootReducer,
+    defaultState,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  )
   return [store, history]
 }
 

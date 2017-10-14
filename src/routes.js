@@ -7,6 +7,7 @@ import Kakia from './Components/Kakia/AllKakias'
 import App from './Components/App/App'
 import Ginnah from './Components/Ginnah/AllGinnah'
 import Tao from './Components/Tao/AllTao'
+import FirebaseExample from './Components/Firebase/Example'
 // const storeAndHistory = initStore()
 // const history = storeAndHistory[1]
 
@@ -19,6 +20,7 @@ export const Routes = () => {
         <Route exact path='/Tao'component={Tao} />
         <Route exact path='/Kakia' component={Kakia} />
         <Route exact path='/Ginnah' component={Ginnah} />
+        <Route exact path='/FBExample' component={FirebaseExample} />
       </Switch>
     </Router>
   )
