@@ -34,6 +34,13 @@ class Main extends Component {
         console.log("error logging from creating ginnah:", err);
       });
   };
+  deleteGinna = (ginnahId) => {
+    console.log("delete clicked")
+    return this.props.firebase.remove(`/ginnahs/${ginnahId}`)
+  }
+  editGinnah = () => {
+    console.log("edit clicked")
+  }
   onChange = () => {
     console.log("on change is being triggered");
   };
@@ -45,7 +52,7 @@ class Main extends Component {
       : isEmpty(ginnahs)
         ? "Ginnah list is empty"
         : Object.keys(ginnahs).map((key, id) =>
-            <div key={id}>
+            <div key={id} id={key}>
               <p>
                 Name:{ginnahs[key].name}
               </p>
@@ -55,6 +62,8 @@ class Main extends Component {
               <p>
                 description:{ginnahs[key].description}
               </p>
+              <button onClick={()=> this.deleteGinna(key)}>Delete</button>
+              <button onClick={this.editGinnah}>Edit</button>
             </div>
           );
 
@@ -65,29 +74,38 @@ class Main extends Component {
             <button>Back to home</button>
           </Link>
         </div>
-        <input
-          type="text"
-          ref={ref => {
-            this.name = ref;
-          }}
-          onChange={this.updateChanges}
-        />
-        <input
-        type="text"
-        ref={ref => {
-          this.school = ref;
-        }}
-        onChange={this.updateChanges}
-      />
-        <input
-          type="text"
-          ref={ref => {
-            this.description = ref;
-          }}
-          placeholder="description"
-        />
-        <button onClick={this.addToFirebase}>Add</button>
-        {ginnahList}
+        <div className="Example-Div">
+          <h4>Add Ginnah</h4>
+          <input
+            type="text"
+            ref={ref => {
+              this.name = ref;
+            }}
+            placeholder="name"
+            onChange={this.updateChanges}
+          />
+          <input
+            type="text"
+            ref={ref => {
+              this.school = ref;
+            }}
+            placeholder="school"
+            onChange={this.updateChanges}
+          />
+          <input
+            type="text"
+            ref={ref => {
+              this.description = ref;
+            }}
+            placeholder="description"
+          />
+          <button onClick={this.addToFirebase}>Add</button>
+        </div>
+     <div>    
+     <h4>All Ginnahs</h4>
+     {ginnahList}
+     </div>
+    
       </div>
     );
   }
