@@ -7,7 +7,7 @@ import Kakia from './Components/Kakia/AllKakias'
 import App from './Components/App/App'
 import Ginnah from './Components/Ginnah/AllGinnah'
 import Tao from './Components/Tao/AllTao'
-import FirebaseExample from './Components/Firebase/Example'
+import FirebaseExample from './Components/Firebase/Ginnahs'
 // const storeAndHistory = initStore()
 // const history = storeAndHistory[1]
 

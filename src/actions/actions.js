@@ -66,3 +66,12 @@ export function editKakia (name, school, index) {
     index
   }
 }
+
+export function firebaseAddGinnah (name, school, description) {
+  return {
+    type: 'ADD_FIREBASEGINNAH',
+    name,
+    school,
+    description
+  }
+}

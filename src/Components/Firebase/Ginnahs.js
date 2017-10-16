@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-
+import Display from "./Display";
+import Form from './Form'
 import { firebaseConnect, helpers } from "react-redux-firebase";
 const { isLoaded, isEmpty, dataToJS } = helpers;
 
@@ -20,13 +21,11 @@ class Main extends Component {
   }
 
   updateChanges = e => {
-    console.log("the current state", this.state);
-    this.setState(state => ({
-      ...state,
-      name: this.name.value,
-      school: this.school.value,
-      description: this.description.value
-    }));
+    let currentState = this.state;
+    let key = e.target.name;
+    let value = e.target.value;
+    currentState[key] = value;
+    this.setState(state => ({ ...state, currentState }));
   };
   // updateChanges = e => {
   //   let key = e.target.name;
@@ -34,22 +33,22 @@ class Main extends Component {
   //   console.log(value);
   // };
 
-  addToFirebase = () => {
+  addToFirebase = (e) => {
+    e.preventDefault();
     console.log("Add to firebase being triggered");
     // const { newGinnah } = this.refs;
-    console.log(this.name.value);
     if (this.state.editStatus) {
       return this.props.firebase.update(`/ginnahs/${this.state.editIndex}`, {
-        name: this.name.value,
-        school: this.school.value,
-        description: this.description.value
+        name: this.state.name,
+        school: this.state.school,
+        description: this.state.description
       });
     } else {
       return this.props.firebase
         .push("/ginnahs", {
-          name: this.name.value,
-          school: this.school.value,
-          description: this.description.value
+          name: this.state.name,
+          school: this.state.school,
+          description: this.state.description
         })
         .then(() => {
           console.log("New Ginnah Created");
@@ -59,7 +58,7 @@ class Main extends Component {
         });
     }
   };
-  deleteGinna = ginnahId => {
+  deleteGinnah = ginnahId => {
     console.log("delete clicked");
     return this.props.firebase.remove(`/ginnahs/${ginnahId}`);
   };
@@ -95,19 +94,7 @@ class Main extends Component {
       : isEmpty(ginnahs)
         ? "Ginnah list is empty"
         : Object.keys(ginnahs).map((key, id) =>
-            <div key={id} id={key}>
-              <p>
-                Name:{ginnahs[key].name}
-              </p>
-              <p>
-                School:{ginnahs[key].school}
-              </p>
-              <p>
-                description:{ginnahs[key].description}
-              </p>
-              <button onClick={() => this.deleteGinna(key)}>Delete</button>
-              <button onClick={() => this.editGinnah(key)}>Edit</button>
-            </div>
+            <Display key={id} ginnah={ginnahs[key]} id={key} editGinnah={()=> this.editGinnah(key)}  deleteGinnah={() => this.deleteGinnah(key)}/>
           );
 
     return (
@@ -119,34 +106,7 @@ class Main extends Component {
         </div>
         <div className="Example-Div">
           <h4>Add Ginnah</h4>
-          <input
-            type="text"
-            ref={ref => {
-              this.name = ref;
-            }}
-            placeholder="name"
-            onChange={this.updateChanges}
-            value={this.state.name}
-          />
-          <input
-            type="text"
-            ref={ref => {
-              this.school = ref;
-            }}
-            placeholder="school"
-            onChange={this.updateChanges}
-            value={this.state.school}
-          />
-          <input
-            type="text"
-            ref={ref => {
-              this.description = ref;
-            }}
-            placeholder="description"
-            onChange={this.updateChanges}
-            value={this.state.description}
-          />
-          <button onClick={this.addToFirebase}>Add</button>
+        <Form name={this.state.name} school={this.state.school} description={this.state.description} submitGinnahChange={this.addToFirebase} onChange={this.updateChanges} />
         </div>
         <div>
           <h4>All Ginnahs</h4>

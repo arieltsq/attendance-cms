@@ -119,6 +119,7 @@
   width: 30%;
 }
 
-.Example-Div{
- height: 100px;
+.Example-Div button{
+ background-color: lightyellow;
+ width: 20%;
 }
