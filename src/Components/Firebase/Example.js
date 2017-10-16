@@ -8,45 +8,88 @@ const { isLoaded, isEmpty, dataToJS } = helpers;
 // map the initate state to props
 
 class Main extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: "",
+      school: "",
+      description: "",
+      editStatus: false,
+      editIndex: ""
+    };
+  }
+
   updateChanges = e => {
-    // let currentState = this.state;
-    let key = e.target.name;
-    let value = e.target.value;
-    // currentState[key] = value;
-    // this.setState(state => ({ ...state, currentState }));
-    console.log(value);
+    console.log("the current state", this.state);
+    this.setState(state => ({
+      ...state,
+      name: this.name.value,
+      school: this.school.value,
+      description: this.description.value
+    }));
   };
+  // updateChanges = e => {
+  //   let key = e.target.name;
+  //   let value = e.target.value;
+  //   console.log(value);
+  // };
 
   addToFirebase = () => {
     console.log("Add to firebase being triggered");
     // const { newGinnah } = this.refs;
     console.log(this.name.value);
-    return this.props.firebase
-      .push("/ginnahs", {
+    if (this.state.editStatus) {
+      return this.props.firebase.update(`/ginnahs/${this.state.editIndex}`, {
         name: this.name.value,
         school: this.school.value,
         description: this.description.value
-      })
-      .then(() => {
-        console.log("New Ginnah Created");
-      })
-      .catch(err => {
-        console.log("error logging from creating ginnah:", err);
       });
+    } else {
+      return this.props.firebase
+        .push("/ginnahs", {
+          name: this.name.value,
+          school: this.school.value,
+          description: this.description.value
+        })
+        .then(() => {
+          console.log("New Ginnah Created");
+        })
+        .catch(err => {
+          console.log("error logging from creating ginnah:", err);
+        });
+    }
   };
-  deleteGinna = (ginnahId) => {
-    console.log("delete clicked")
-    return this.props.firebase.remove(`/ginnahs/${ginnahId}`)
-  }
-  editGinnah = () => {
-    console.log("edit clicked")
-  }
+  deleteGinna = ginnahId => {
+    console.log("delete clicked");
+    return this.props.firebase.remove(`/ginnahs/${ginnahId}`);
+  };
+  editGinnah = ginnahId => {
+    console.log("edit clicked");
+    console.log("Id being clicked", ginnahId);
+    const ginnahObject = this.props.ginnahs;
+
+    for (let keys in ginnahObject) {
+      if (keys === ginnahId) {
+        console.log(keys);
+        console.log("the logged content", ginnahObject[keys].name);
+
+        this.setState(state => ({
+          ...state,
+          name: ginnahObject[keys].name,
+          school: ginnahObject[keys].school,
+          description: ginnahObject[keys].description,
+          editStatus: true,
+          editIndex: ginnahId
+        }));
+      }
+    }
+  };
   onChange = () => {
     console.log("on change is being triggered");
   };
   render() {
     const { ginnahs } = this.props;
-    console.log(ginnahs);
+
     const ginnahList = !isLoaded(ginnahs)
       ? "Loading"
       : isEmpty(ginnahs)
@@ -62,8 +105,8 @@ class Main extends Component {
               <p>
                 description:{ginnahs[key].description}
               </p>
-              <button onClick={()=> this.deleteGinna(key)}>Delete</button>
-              <button onClick={this.editGinnah}>Edit</button>
+              <button onClick={() => this.deleteGinna(key)}>Delete</button>
+              <button onClick={() => this.editGinnah(key)}>Edit</button>
             </div>
           );
 
@@ -83,6 +126,7 @@ class Main extends Component {
             }}
             placeholder="name"
             onChange={this.updateChanges}
+            value={this.state.name}
           />
           <input
             type="text"
@@ -91,6 +135,7 @@ class Main extends Component {
             }}
             placeholder="school"
             onChange={this.updateChanges}
+            value={this.state.school}
           />
           <input
             type="text"
@@ -98,14 +143,15 @@ class Main extends Component {
               this.description = ref;
             }}
             placeholder="description"
+            onChange={this.updateChanges}
+            value={this.state.description}
           />
           <button onClick={this.addToFirebase}>Add</button>
         </div>
-     <div>    
-     <h4>All Ginnahs</h4>
-     {ginnahList}
-     </div>
-    
+        <div>
+          <h4>All Ginnahs</h4>
+          {ginnahList}
+        </div>
       </div>
     );
   }
