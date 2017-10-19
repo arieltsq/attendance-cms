@@ -19,8 +19,8 @@ class Main extends Component {
       <div className='Main'>
         <h1 className='Main-title'> Welcome to Attendance CMS System</h1>
         <div className='Main-Navbar'>
-          <Link to='/Add'>
-            <button>Add Ginnah(firebase)</button>
+          <Link to='/GinnahFB'>
+            <button>Access Ginnah(firebase)</button>
           </Link>
           <Link to='/Tao'>
             <button>Access Tao Page</button>

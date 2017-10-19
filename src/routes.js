@@ -1,8 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-// import { initStore } from './Store'
 // routes components
-import InputData from './Components/InputData/InputData'
+import GinnahFB from './Components/GinnahFB/AllGinnahFB'
 import Kakia from './Components/Kakia/AllKakias'
 import App from './Components/App/App'
 import Ginnah from './Components/Ginnah/AllGinnah'
@@ -15,7 +14,7 @@ export const Routes = () => {
     <Router>
       <Switch>
         <Route exact path='/' component={App} />
-        <Route path='/Add' component={InputData} />
+        <Route path='/GinnahFB' component={GinnahFB} />
         <Route exact path='/Tao'component={Tao} />
         <Route exact path='/Kakia' component={Kakia} />
         <Route exact path='/Ginnah' component={Ginnah} />

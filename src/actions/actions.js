@@ -1,3 +1,28 @@
+import firebase from 'firebase'
+import database from '../fire'
+
+// firebase
+export function getGinnahsFB () {
+  return dispatch => {
+    database.on('value', snapshot => {
+      dispatch({
+        type: 'FETCH_GINNAHS_FB',
+        payload: snapshot.val()
+      })
+    })
+  }
+}
+
+export function saveGinnahsFB (ginnahValues) {
+  return dispatch => database.push(ginnahValues)
+}
+export function deleteGinnahFB (key) {
+  return dispatch => database.child(key).remove()
+}
+export function updateGinnahFB (updates, key) {
+  return dispatch => database.child(key).update(updates)
+}
+
 // Ginnah Actions
 export function addGinnah (name, school, description) {
   return {

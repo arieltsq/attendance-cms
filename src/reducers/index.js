@@ -9,11 +9,13 @@ import { routerReducer } from 'react-router-redux'
 import ginnahReducer from './ginnah'
 import taoReducer from './tao'
 import kakiaReducer from './kakia'
+import ginnahFBReducer from './ginnahFB'
 
 const rootReducer = combineReducers({
   ginnahs: ginnahReducer,
   taos: taoReducer,
   kakias: kakiaReducer,
+  ginnahFB: ginnahFBReducer,
   routing: routerReducer
 })
 
