@@ -1,6 +1,59 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans:300,400');
+* {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: lighter;
+}
+html{
+  height: 100%;
+  /* background-color: #212121; */
+  color: #212121;
+}
+
 .Main {
   text-align: center;
+  /* background-color: #000; */
 }
+.Main_Container{
+  padding: 27px;
+}
+#shape_container {
+  position: relative;
+  text-align: center;
+  padding: 12px;
+  margin-bottom: 6px;
+  height: 89px;
+  width: 100%;
+}
+
+#shape_container:before {
+  content: '';
+  position: absolute;
+  top: 16;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  border:2px solid #fff;
+  background-color:#212121;
+  -webkit-transform: skew(0deg, 6deg);
+  -moz-transform: skew(0deg, 6deg);
+  -ms-transform: skew(0deg, 6deg);
+  -o-transform: skew(0deg, 6deg);
+  transform: skew(100deg, 5deg);
+}
+/* #chevron:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 50%;
+  background: red;
+  -webkit-transform: skew(0deg, -6deg);
+  -moz-transform: skew(0deg, -6deg);
+  -ms-transform: skew(0deg, -6deg);
+  -o-transform: skew(0deg, -6deg);
+  transform: skew(0deg, -6deg);
+}​ */
 
 .Main-logo {
   animation: Main-logo-spin infinite 20s linear;
@@ -8,26 +61,34 @@
 }
 
 .Main-header {
-  background-color: #222;
+  /* background-color: #222; */
   height: 150px;
   padding: 20px;
-  color: white;
+  color: black;
 }
 
 .Main-title {
   font-size: 1.5em;
+  color: #fff;
+  position: relative;
+  top: 50%;
+  bottom: 0;
 }
 
 .Main-intro {
   font-size: large;
 }
 .Main-Navbar {
-  background-color: linen;
+/* background-color: #000000; */
+margin-top: 63px;
 }
 .Main-Navbar Button {
-  background-color: lightgoldenrodyellow;
+  /* background-color: #484848; */
   padding: 10px;
-}
+  color: #484848; 
+  background-color: orangered;
+  margin: 2%;
+} 
 
 /*Ginnah Component*/
 .AllGinnah {

@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import "./Firebase.css";
 import Display from "./Display";
-import Form from './Form'
+import Form from "./Form";
 import { firebaseConnect, helpers } from "react-redux-firebase";
 const { isLoaded, isEmpty, dataToJS } = helpers;
 
 // map the initate state to props
 
-class Main extends Component {
+class FirebaseMain extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -33,17 +34,19 @@ class Main extends Component {
   //   console.log(value);
   // };
 
-  addToFirebase = (e) => {
+  addToFirebase = e => {
     e.preventDefault();
     console.log("Add to firebase being triggered");
-    // const { newGinnah } = this.refs;
+
     if (this.state.editStatus) {
+      //editing 
       return this.props.firebase.update(`/ginnahs/${this.state.editIndex}`, {
         name: this.state.name,
         school: this.state.school,
         description: this.state.description
       });
     } else {
+      // adding
       return this.props.firebase
         .push("/ginnahs", {
           name: this.state.name,
@@ -63,6 +66,7 @@ class Main extends Component {
     return this.props.firebase.remove(`/ginnahs/${ginnahId}`);
   };
   editGinnah = ginnahId => {
+    // putting information into the textboxes
     console.log("edit clicked");
     console.log("Id being clicked", ginnahId);
     const ginnahObject = this.props.ginnahs;
@@ -89,36 +93,70 @@ class Main extends Component {
   render() {
     const { ginnahs } = this.props;
 
-    const ginnahList = !isLoaded(ginnahs)
-      ? "Loading"
-      : isEmpty(ginnahs)
-        ? "Ginnah list is empty"
-        : Object.keys(ginnahs).map((key, id) =>
-            <Display key={id} ginnah={ginnahs[key]} id={key} editGinnah={()=> this.editGinnah(key)}  deleteGinnah={() => this.deleteGinnah(key)}/>
-          );
-
     return (
-      <div className="Main">
-        <div className="Main-Navbar">
+      <div className="Firebase_Container">
+        <div clas className="item item_first Navbar">
           <Link to="/">
             <button>Back to home</button>
           </Link>
         </div>
-        <div className="Example-Div">
-          <h4>Add Ginnah</h4>
-        <Form name={this.state.name} school={this.state.school} description={this.state.description} submitGinnahChange={this.addToFirebase} onChange={this.updateChanges} />
+        {/* <div className="Container_2" >
+          <div clasName="Container_item1">
+            <p>blahblahblahblah</p>
+          </div>
+          <div clasName="Container_item1">
+            <p>blahblahblahblah</p>
+          </div>
+        </div> */}
+        <div className="Container_2" >
+          <div className="Container_left">
+            <h4>Add Ginnah</h4>
+            <Form
+              name={this.state.name}
+              school={this.state.school}
+              description={this.state.description}
+              submitGinnahChange={this.addToFirebase}
+              onChange={this.updateChanges}
+            />
+          </div>
+          <div className="Container_left">
+            <h4>All Ginnahs</h4>
+            {!isLoaded(ginnahs)
+              ? "Loading"
+              : isEmpty(ginnahs)
+                ? "Ginnah list is empty"
+                : Object.keys(ginnahs).map((key, id) =>
+                    <Display
+                      key={id}
+                      ginnah={ginnahs[key]}
+                      id={key}
+                      editGinnah={() => this.editGinnah(key)}
+                      deleteGinnah={() => this.deleteGinnah(key)}
+                    />
+                  )}
+          </div>
         </div>
-        <div>
-          <h4>All Ginnahs</h4>
-          {ginnahList}
-        </div>
+        <div className="item item_last" />
       </div>
     );
   }
 }
 
-const wrappedMain = firebaseConnect(["/ginnahs"])(Main);
+// const number = 1;
+
+const wrappedFirebaseMain = firebaseConnect( 
+  ({ match }) => {
+    console.log('== HERE', match);
+    return [
+    // "/ginnahs"
+    {
+      path: '/ginnahs',
+      storeAs: 'ginnahs', // place in redux under "myTodos"
+      queryParams: ['orderByKey=name', 'limitToFirst=20'],
+    }
+  ]
+})(FirebaseMain);
 
 export default connect(({ firebase }) => ({
   ginnahs: dataToJS(firebase, "/ginnahs")
-}))(wrappedMain);
+}))(wrappedFirebaseMain);

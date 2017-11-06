@@ -4,10 +4,11 @@ import { createStore } from 'redux'
 // import the root reducer
 import createHistory from 'history/createBrowserHistory'
 import rootReducer from './reducers/index'
+
 // importing seed data
-import kakias from './data/kakias'
-import ginnahs from './data/ginnahs'
-import taos from './data/taos'
+// import kakias from './data/kakias'
+// import ginnahs from './data/ginnahs'
+// import taos from './data/taos'
 
 // firebase import
 import { reactReduxFirebase } from 'react-redux-firebase'
@@ -15,7 +16,7 @@ import { compose } from 'redux'
 // import firebaseConfig from './fire'
 
 const defaultState = {
- 
+
 }
 var firebaseConfig = { /* COPY THE ACTUAL CONFIG FROM FIREBASE CONSOLE */
   apiKey: 'AIzaSyCtMZDjmlQeN2xZvekjVGt_ZFCJgSY0iIM',

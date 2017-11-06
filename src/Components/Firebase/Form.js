@@ -4,7 +4,7 @@ const AddGinnah = props => {
   console.log('Props from AddGinnah', props)
   return (
     <div>
-      <form onSubmit={props.submitGinnahChange} className='AddGinnah-form'>
+      <form onSubmit={props.submitGinnahChange} className=''>
         <label>
           <p><b>Name:</b></p>
           <input

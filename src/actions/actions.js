@@ -75,3 +75,22 @@ export function firebaseAddGinnah (name, school, description) {
     description
   }
 }
+
+export function newGinnahForm (name, school, description) {
+  return {
+    type: 'NEW_GINNAH',
+    name,
+    school,
+    description
+  }
+}
+
+export function editGinnahForm (name, school, description, id) {
+  return {
+    type: 'EDIT_GINNAH',
+    name,
+    school,
+    description,
+    id
+  }
+}

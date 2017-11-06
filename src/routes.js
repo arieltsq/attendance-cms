@@ -20,7 +20,7 @@ export const Routes = () => {
         <Route exact path='/Tao'component={Tao} />
         <Route exact path='/Kakia' component={Kakia} />
         <Route exact path='/Ginnah' component={Ginnah} />
-        <Route exact path='/FBExample' component={FirebaseExample} />
+        <Route exact path='/FBExample/:id' component={FirebaseExample} />
       </Switch>
     </Router>
   )

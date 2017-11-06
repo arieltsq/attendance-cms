@@ -12,23 +12,28 @@ class Main extends Component {
   render () {
     return (
       <div className='Main'>
-        <h1 className='Main-title'> Welcome to Attendance CMS System</h1>
-        <div className='Main-Navbar'>
-          <Link to='/Add'>
-            <button>Add Ginnah(firebase)</button>
-          </Link>
-          <Link to='/Tao'>
-            <button>Access Tao Page</button>
-          </Link>
-          <Link to='/Kakia'>
-            <button>Access Kakia Page</button>
-          </Link>
-          <Link to='/Ginnah'>
-            <button>Access Ginnah Page</button>
-          </Link>
-          <Link to='/FBExample'>
-            <button>Example of Firebase</button>
-          </Link>
+        <div className='Main_Container'>
+          <div id='shape_container' >
+            <h1 className='Main-title'> Welcome to Attendance CMS System</h1>
+          </div>
+
+          <div className='Main-Navbar'>
+            <Link to='/Add'>
+              <button>Add Ginnah(firebase)</button>
+            </Link>
+            <Link to='/Tao'>
+              <button>Access Tao Page</button>
+            </Link>
+            <Link to='/Kakia'>
+              <button>Access Kakia Page</button>
+            </Link>
+            <Link to='/Ginnah'>
+              <button>Access Ginnah Page</button>
+            </Link>
+            <Link to='/FBExample/1'>
+              <button>Example of Firebase</button>
+            </Link>
+          </div>
         </div>
 
       </div>
